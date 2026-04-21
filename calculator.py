@@ -70,6 +70,17 @@ def is_prime(n):
     return True
 
 
+def square_root(n):
+    """Return the square root of n.
+
+    Raises:
+        ValueError: If n is negative.
+    """
+    if n < 0:
+        raise ValueError("Cannot take the square root of a negative number.")
+    return n ** 0.5
+
+
 if __name__ == "__main__":
     print("Calculator Demo")
     print(f"add(3, 5)       = {add(3, 5)}")
@@ -79,3 +90,4 @@ if __name__ == "__main__":
     print(f"power(2, 10)    = {power(2, 10)}")
     print(f"factorial(5)    = {factorial(5)}")
     print(f"is_prime(17)    = {is_prime(17)}")
+    print(f"square_root(25) = {square_root(25)}")

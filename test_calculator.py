@@ -3,7 +3,7 @@ Unit tests for the calculator module.
 """
 
 import unittest
-from calculator import add, subtract, multiply, divide, power, factorial, is_prime
+from calculator import add, subtract, multiply, divide, power, factorial, is_prime, square_root
 
 
 class TestAdd(unittest.TestCase):
@@ -135,6 +135,21 @@ class TestIsPrime(unittest.TestCase):
     def test_non_integer_raises(self):
         with self.assertRaises(TypeError):
             is_prime(3.5)
+
+
+class TestSquareRoot(unittest.TestCase):
+    def test_square_root_perfect_square(self):
+        self.assertEqual(square_root(25), 5.0)
+
+    def test_square_root_zero(self):
+        self.assertEqual(square_root(0), 0.0)
+
+    def test_square_root_non_perfect(self):
+        self.assertAlmostEqual(square_root(2), 1.41421, places=5)
+
+    def test_square_root_negative_raises(self):
+        with self.assertRaises(ValueError):
+            square_root(-1)
 
 
 if __name__ == "__main__":
