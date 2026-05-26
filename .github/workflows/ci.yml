@@ -1,5 +1,6 @@
 name: CI
 
+# Trigger this workflow for all branch pushes and pull requests.
 on:
   push:
     branches: ["**"]
@@ -8,19 +9,24 @@ on:
 
 jobs:
   test:
+    # Run the test job on the latest Ubuntu runner.
     runs-on: ubuntu-latest
 
     steps:
+      # Check out repository contents.
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Install the Python runtime used by this project.
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
+      # Print a status message in workflow logs.
       - name: Show workflow is running
         run: echo "✅ CI workflow is running in GitHub Actions!"
 
+      # Execute the full unit test suite.
       - name: Run tests
         run: python -m unittest discover -v
